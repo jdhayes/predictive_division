@@ -11,6 +11,9 @@ SMOOTH=$(basename $1)
 DIR="\.\.\/\.\.\/data"
 START=$2 #"0.5,0.5,0.5"
 
+# Print out what we are working on
+echo "Working on job: $SMOOTH $START"
+
 # Define important files
 CELLNAME=${SMOOTH%-30.fe}
 PPBFILE="${CELLNAME}_PPB.fe"
@@ -27,29 +30,46 @@ fi
 mkdir -p ${BASEDIR}/results/${CELLNAME} && cd ${BASEDIR}/results/${CELLNAME}
 sed "s/ee\.e_boundary/0/g" $BASEDIR/data/${SMOOTH} | sed "s/^showq;//g" > smooth_${START//,/-}.fe
 echo -e "\n// Add starting point for cut\nrun ($START)" >> smooth_${START//,/-}.fe
-CUT=$(echo smooth_${START//,/-}.fe | ${EVOLVER} 2>smooth_${START//,/-}_error.log)
+CUT=$(echo smooth_${START//,/-}.fe | ${EVOLVER} -x 1>/dev/null 2>smooth_${START//,/-}_error.log; wait)
+#${PIPESTATUS[1]}
 
-# Run through each fe file and merge PPB and predictive division
-for DMPFILE in $(ls *.dmp); do
+# Determine dump file
+DMPFILE=$(ls ${CELLNAME}-${START//,/-}-*.dmp)
+
+# Process merge DMP, PPB and process predictive division
+if [[ -f "$DMPFILE" ]]; then
+    "$CUT" -eq 0
+    
     # Get uniq name, by energy metric
     DMP=$(echo ${DMPFILE} | grep -oP '[0-9]+\.[0-9]+\.dmp$' | sed 's/\.dmp//g');
-    
+
     # Merge all sources into a single fe file and replace VARs and remove broken code
     cat ${DMPFILE} ${BASEDIR}/etc/PPBaccuracyGREEN_Realz.txt | sed "s/PPBFILE/$DIR\/$PPBFILE/g" | sed "s/showq//g" | sed "s/ee\.e_boundary/0/g" > ${DMP}_merged
 
+    # Create "ghost" prediction for visualization purposes
+    cat ${BASEDIR}/data/${SMOOTH} ${BASEDIR}/etc/maybealittleok.txt ${BASEDIR}/etc/PPBaccuracyGREEN_Realz.txt | sed "s/PPBFILE/$DIR\/${PPBFILE}/g" | sed "s/DMPFILE/${DMPFILE}/g" | sed "s/showq//g" | sed "s/ee\.e_boundary/0/g" > ${DMP}_merged_ghost;
+    echo "showq" >> ${DMP}_merged_ghost
+
     # Run evolver with fe and data files
-    PRED=$(echo ${DMP}_merged | ${EVOLVER} 2>${DMP}_error.log | tail -2 | head -1 | grep -oP "[0-9\.]+")
-    #echo "${DMP}_merged" | ${EVOLVER}
-    
-    # Print out Name and Prediction
-    ERROR=$(cat ${DMP}_error.log | wc -l)
-    touch prediction.csv
-    if [[ ! "${ERROR}" -gt "0" ]]; then
-        echo -e "${CELLNAME}\t${DMP}\t${PRED}" >> prediction.csv
+    RESULT=($(echo ${DMP}_merged | ${EVOLVER} -x 2>${DMP}_error.log | tail -4 | egrep "^\s" | grep -oP "[0-9\.]+"; echo ${PIPESTATUS[1]}))
+    PRED=${RESULT[0]}
+    ERROR=${RESULT[1]}
+
+    # Check if we have errors
+    ISEMPTY=$(cat ${DMP}_error.log | wc -l)
+    if [[ "$ISEMPTY" == 0 ]]; then
         rm -f ${DMP}_error.log
-    else
-        echo -e "${CELLNAME}\t${DMP}\tERROR" >> prediction.csv
     fi
 
-done
+    # Print out Name and Prediction
+    touch prediction.csv
+    if [[ ! -z "${ERROR}" && "${ERROR}" -eq 0 ]]; then
+        echo -e "${CELLNAME}\t${START}\t${DMP}\t${PRED}" >> prediction.csv
+    else
+        echo -e "${CELLNAME}\t${START}\t${DMP}\tERROR: Prediction failed" >> prediction.csv
+    fi
+else
+    echo -e "${CELLNAME}\t${START}\tNA\tERROR: No dump file" >> prediction.csv
+    exit
+fi
 
