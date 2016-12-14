@@ -11,7 +11,7 @@ for FE in $(ls $BASEDIR/data/*-30.fe); do
     cat ${FE} ${BASEDIR}/etc/AreaVolumeCenter_Delta.txt | sed 's/ee\.e_boundary/0/g' | sed 's/showq//g' > /tmp/evolver.tmp
     DELTA=$(echo /tmp/evolver.tmp | evolver -x 2>/dev/null | grep 'Distance between area center and volume center' | grep -v 'printf' | cut -f2 -d: | sed 's/\s//g')
     echo -e "$(basename ${FE})\t${DELTA}" >> area_volume_center_deltas.csv
-    for START in $(cat $BASEDIR/etc/61points.txt | sed 's/\s//g'); do
+    for START in $(cat $BASEDIR/etc/points.txt | sed 's/\s//g'); do
          CUT=$(echo $START | sed -e 's/\s//g' -e 's/\,/\n/g' | sed '/\./ s/\.\{0,1\}0\{1,\}$//' | tr '\n' ',' | sed 's/\,$//g')
          echo $FE $CUT >> all_cells_points.txt
     done
