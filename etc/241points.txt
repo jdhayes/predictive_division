@@ -1,9 +1,3 @@
-Vertices: 122  Edges: 360  Facets: 240  Bodies: 0  Facetedges: 720
-Element memory: 107 KB, or 0 MB
-Total data memory: 943 KB, or 0 MB.
-Vertices: 482  Edges: 1440  Facets: 960  Bodies: 0  Facetedges: 2880
-Element memory: 427 KB, or 0 MB
-Total data memory: 1034 KB, or 1 MB.
   0.577350, 0.577350, 0.577350
  -0.577350, 0.577350, 0.577350
   0.577350,-0.577350, 0.577350

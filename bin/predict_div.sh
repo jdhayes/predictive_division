@@ -1,5 +1,7 @@
 #!/bin/bash -l
 
+module load surface-evolver
+
 # First check for arguments
 ARGS=2        # Number of arguments expected.
 E_BADARGS=65  # Exit value if incorrect number of args passed.
@@ -16,7 +18,7 @@ echo "Working on job: $SMOOTH $START"
 
 # Define important files
 CELLNAME=${SMOOTH%-30.fe}
-PPBFILE="${CELLNAME}_PPB.fe"
+PPBFILE="$(echo ${CELLNAME} | sed 's/_[oO]*u[t]*line$//g')_PPB2.fe"
 if [[ -z $BASEDIR/data/$SMOOTH ]]; then
     echo -e "${CELLNAME}\tERROR\tNO Smooth file"
     exit
