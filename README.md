@@ -7,8 +7,8 @@ Hopefully the end of this project will result in a reusable pipeline that can sm
 TODO
 
 # Usage
-In order to run the pipeling you must first ensure that the data directory contains "*-30.fe" files and "*_PPB2.fe" files.
-Each 30.fe file must have an identically names PPB2.fe file.
+In order to run the pipeling you must first ensure that the data directory contains "\*-30.fe" files and "\*_PPB2.fe" files.
+Each 30.fe file must have an identically named PPB2.fe file.
 
 After the data has been properly formatted, then just run the following:
 ```
