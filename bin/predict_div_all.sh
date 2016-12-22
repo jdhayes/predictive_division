@@ -60,9 +60,9 @@ if [[ -z ${RESUME} ]]; then
     # Delete temp files
     rm -f ${TMPFILE} /tmp/evolver_v.tmp
 
-    # Split up file in batches of 5000, since that is the max number of queued jobs allowed on Biocluster
+    # Split up file in batches of 2500, since the max number of queued jobs allowed on Biocluster is 5000
     rm -f split_cells_points_*
-    split -l 5000 all_cells_points.txt split_cells_points_ --additional-suffix='.txt'
+    split -l 2500 all_cells_points.txt split_cells_points_ --additional-suffix='.txt'
 fi
 
 # Gather split files
@@ -73,8 +73,8 @@ else
     # Select all cell and point combinations
     #FILES=$(ls split_cells_points_*.txt)
      
-    # Select the first cell-point file
-    FILES=$(ls split_cells_points_*.txt | head -1)
+    # Select the first 2 cell-point files, so that we max out the 5000 job limit
+    FILES=$(ls split_cells_points_*.txt | head -2)
 fi
 
 # Track counts of cells
