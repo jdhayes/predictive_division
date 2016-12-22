@@ -18,7 +18,7 @@ The above command will compute the area volume center deltas and the volumes for
     area_volume_center_deltas.csv
     cell_volumes.csv
     
-Currently we use UCR's HPC Torque cluster and thus needs to be limited to maximum of 5000 jobs. So it will proceed to generate all combinations of cells and starting points and place these values under the results directory in a file called all_cells_points.txt. Then it will split up this file into smaller files of 5000 lines each.
+Currently we use UCR's HPC Torque cluster and thus needs to be limited to maximum of 5000 jobs. Thus it will proceed to generate all combinations of cells and starting points and place these values under the results directory in a file called all_cells_points.txt, and then it will split up this file into smaller files of 5000 lines each.
 
 Finally it will iterate over the first file and submit 5000 jobs to the cluster via qsub.
 When all these jobs are completed, we can submit the next batch by using the resume argument, like so:
