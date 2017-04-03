@@ -89,7 +89,10 @@ for FILE in ${FILES}; do
         IFS=$' '
         # Submit to job to cluster
         echo "Submitting job: $(basename $(echo ${line} | awk '{print $1}')) $(echo ${line} | awk '{print $2}')"
-        echo predict_div.sh ${line} | qsub -l walltime=48:00:00 -j oe
+        # Torque
+        #echo predict_div.sh ${line} | qsub -l walltime=72:00:00 -j oe
+        # Slurm
+        sbatch predict_div_wrapper.sh ${line}
 
         # Run Locally
         #count=$(($count+1))

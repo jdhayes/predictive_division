@@ -40,7 +40,8 @@ DMPFILE=$(ls ${CELLNAME}-${START//,/-}-*.dmp)
 
 # Process merge DMP, PPB and process predictive division
 if [[ -f "$DMPFILE" ]]; then
-    "$CUT" -eq 0
+    # Not sure why this is here, maybe it could be a good place to check the CUT
+    #"$CUT" -eq 0
     
     # Get uniq name, by energy metric
     DMP=$(echo ${DMPFILE} | grep -oP '[0-9]+\.[0-9]+\.dmp$' | sed 's/\.dmp//g');
