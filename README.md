@@ -4,13 +4,23 @@ Cell Predictive Division
 Hopefully the end of this project will result in a reusable pipeline that can smooth, cut and predict cell divisions.
 
 # Dependencies
-This pipline utilizes Slurm to manage jobs.
+This pipline utilizes Bash and Slurm to manage jobs.
 There are several assumptions made regarding how Slurm is configured and what partitions are available.
 Thes assumptions should be compatibale with the UCR HPCC Cluster.
 
 # Install
-This pipeline is written in bash, so a ```git clone git@github.com:jdhayes/predictive_division.git``` from a bash shell should be all that you need to get this installed. You will need a GitHub account in order to do this.
-
+Clone a copy of the code to a directory of your choice, you will need a GitHub account in order to do this:
+```
+git clone git@github.com:jdhayes/predictive_division.git
+```
+Then add the following lines to your .bashrc file:
+```
+export PATH=/wherever/you/cloned/predictive/division/bin:$PATH
+```
+Then source your changes:
+```
+source .bashrc
+```
 
 # Usage
 In order to run the pipeline you must first ensure that the data directory contains "\*-30.fe" files and "\*_PPB2.fe" files.
