@@ -9,7 +9,7 @@ There are several assumptions made regarding how Slurm is configured and what pa
 Thes assumptions should be compatibale with the UCR HPCC Cluster.
 
 # Install
-This pipeline is written in bash, so a ```git clone``` from a bash shell should be all that you need to get this installed.
+This pipeline is written in bash, so a ```git clone git@github.com:jdhayes/predictive_division.git``` from a bash shell should be all that you need to get this installed. You will need a GitHub account in order to do this.
 
 
 # Usage
