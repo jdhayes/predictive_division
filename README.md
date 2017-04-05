@@ -34,11 +34,13 @@ The above command will compute the area volume center deltas and the volumes for
     area_volume_center_deltas.csv
     cell_volumes.csv
     
-Currently we use the UCR HPCC Cluster and the pipeline submits jobs in batches of 5000. The initial starting script will proceed to generate all combinations of cells and starting points and place these values under the results directory in a file called all_cells_points.txt, and then it will split up this file into smaller "batch" files of 5000 lines each. Each line is 1 job, so the batch files will be used to submit 5000 jobs at a time.
+Currently we use the UCR HPCC Cluster and it has a maximum of 5000 job submissions. The initial starting script will proceed to generate all combinations of cells and starting points and place these values under the results directory in a file called all_cells_points.txt, and then it will split up this file into smaller "batch" files of 2500 lines each. Each line is 1 job, so the batch files will be used to submit 2500 jobs at a time.
 
-Finally it will iterate over the first batch file and submit 5000 jobs to the cluster via sbatch.
-When all these jobs are completed, we can submit the next batch by using the resume argument, like so:
+Finally it will iterate over the first batch file and submit 5000 jobs (2 batch files, 2 x 2500 = 5000) to the cluster via sbatch.
+When all these jobs are completed, we can submit the next batch by using the resume argument.
+
+The following example will run the 3rd batch file of jobs, since the first 2 have already been submitted with the initial run of the pipeline:
 ```
-predict_div_all.sh --resume 2
+predict_div_all.sh --resume 3
 ```
-The numerical value of 'resume' represents the Nth batch file (set of 5000 jobs) created by the initial starting script.
+
