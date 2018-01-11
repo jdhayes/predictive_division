@@ -36,7 +36,8 @@ Currently we use the UCR HPCC Cluster and it has a maximum of 5000 job submissio
 It will then iterate over the first two batch file and submit 5000 jobs (2 batch files, 2 x 2500 = 5000) to the cluster via sbatch.
 Keep in mind that there is a dependency chain when submitting jobs to Slurm.
 For every cell there is a primary job to convert the STL files to FE files and run spherical harmonics.
-Also within the primary job the volume and area calculations are done.
+The primary job also computes the area volume center deltas and the volumes for each cell and place these values within the corresponding cell directory under the results directory: area_volume_center_delta.csv cell_volume.csv
+
 Once the primary job for a given cell has completed, then all dependency jobs can then proceed to calculate predictions.
 
 When at least half of these jobs have completed, we can submit the next batch by using the resume argument.
