@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="55cm" height="73cm" viewBox="-361 -492 1092 1453" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="160" y="634.5">
+    <tspan x="160" y="634.5"></tspan>
+  </text>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="166.93" y1="579.068" x2="168.131" y2="506.733"/>
+    <polygon style="fill: #000000" points="168.256,499.234 173.089,509.316 168.131,506.733 163.091,509.15 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="168.256,499.234 173.089,509.316 168.131,506.733 163.091,509.15 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-120" y="580" width="572.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="580" width="572.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="166.05" y="599">predic_div_all.sh</text>
+    <rect style="fill: #ffffff" x="-120" y="608" width="572.1" height="68"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="608" width="572.1" height="68"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="622">+1 = Compute the area volume center deltas for each cell and save to file</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="638">+2 = Compute volumes for each cell and save to file</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="654">+3 = Split input files into batches of 2500</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="670">+4 = Pass Jobs (first two batches: 5000 jobs) to predict_div_wrapper.sh</text>
+    <rect style="fill: #ffffff" x="-120" y="676" width="572.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="676" width="572.1" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-120" y="60" width="572.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="60" width="572.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="166.05" y="79">predict_div.sh</text>
+    <rect style="fill: #ffffff" x="-120" y="88" width="572.1" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="88" width="572.1" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="102">+1 = Clean the Smooth file (*-30.FE)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="118">+2 = Add starting point for cut on Clean Smooth file</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="134">+3 = Create Dump file by running Clean Smooth file through evolver</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="150">+4 = Merge DMP and PPBaccuracyGREEN_Realz.txt into merged file (*_merged)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="166">+5 = Set PPB2 file reference in merged file</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="182">+6 = Pass merged file to evolver and save output to prediction.csv</text>
+    <rect style="fill: #ffffff" x="-120" y="188" width="572.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="188" width="572.1" height="8"/>
+  </g>
+  <g>
+    <g>
+      <rect style="fill: #ffffff" x="100" y="260" width="140" height="100"/>
+      <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="260" width="140" height="100"/>
+    </g>
+    <text font-size="18.446" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="170" y="316.4">
+      <tspan x="170" y="316.4">Slurm</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="60" y="440" width="217.55" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="60" y="440" width="217.55" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="168.775" y="459">predict_div_wrapper.sh</text>
+    <rect style="fill: #ffffff" x="60" y="468" width="217.55" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="60" y="468" width="217.55" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="63" y="482">+1 = Submit job to Slurm</text>
+    <rect style="fill: #ffffff" x="60" y="488" width="217.55" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="60" y="488" width="217.55" height="8"/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="168.998" y1="439.301" x2="169.529" y2="370.741"/>
+    <polygon style="fill: #000000" points="169.587,363.241 174.51,373.279 169.529,370.741 164.51,373.202 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="169.587,363.241 174.51,373.279 169.529,370.741 164.51,373.202 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="168.895" y1="259.079" x2="167.758" y2="206.717"/>
+    <polygon style="fill: #000000" points="167.596,199.219 172.811,209.108 167.758,206.717 162.814,209.325 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="167.596,199.219 172.811,209.108 167.758,206.717 162.814,209.325 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="220.091" y1="59.0154" x2="322.201" y2="-71.331"/>
+    <polygon style="fill: #000000" points="326.826,-77.235 324.595,-66.2795 322.201,-71.331 316.723,-72.4463 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="326.826,-77.235 324.595,-66.2795 322.201,-71.331 316.723,-72.4463 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="119.925" y1="58.9986" x2="46.4412" y2="-50.9299"/>
+    <polygon style="fill: #000000" points="42.2732,-57.1651 51.9874,-51.6302 46.4412,-50.9299 43.6738,-46.0728 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="42.2732,-57.1651 51.9874,-51.6302 46.4412,-50.9299 43.6738,-46.0728 "/>
+  </g>
+  <g>
+    <g>
+      <polygon style="fill: #ffffff" points="-360,-480 -350,-490 170,-490 170,-70 160,-60 -360,-60 -360,-480 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-360,-480 -350,-490 170,-490 170,-70 160,-60 -360,-60 -360,-480 "/>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-360" y1="-480" x2="160" y2="-480"/>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="160" y1="-480" x2="170" y2="-490"/>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="160" y1="-480" x2="160" y2="-60"/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-350" y="-458.1">
+        <tspan x="-350" y="-458.1"></tspan>
+      </text>
+      <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="-350" y1="-455.1" x2="-350" y2="-455.1"/>
+    </g>
+    <g>
+      <polygon style="fill: #ffffff" points="-260,-355.992 -164.008,-260 -260,-164.008 -355.992,-260 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-260,-355.992 -164.008,-260 -260,-164.008 -355.992,-260 "/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-260" y="-256.1">
+        <tspan x="-260" y="-256.1">maybealittleok.txt</tspan>
+      </text>
+    </g>
+    <g>
+      <polygon style="fill: #ffffff" points="-101.358,-300 17.2843,-181.358 -101.358,-62.7157 -220,-181.358 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-101.358,-300 17.2843,-181.358 -101.358,-62.7157 -220,-181.358 "/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-101.358" y="-177.458">
+        <tspan x="-101.358" y="-177.458">PPBaccuracyGREEN_Realz.txt</tspan>
+      </text>
+    </g>
+    <g>
+      <polygon style="fill: #ffffff" points="-102.708,-480 -25.4157,-402.708 -102.708,-325.416 -180,-402.708 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-102.708,-480 -25.4157,-402.708 -102.708,-325.416 -180,-402.708 "/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-102.708" y="-398.808">
+        <tspan x="-102.708" y="-398.808">*_merged_ghost</tspan>
+      </text>
+    </g>
+    <g>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-209.147" y1="-306.138" x2="-150.95" y2="-358.938"/>
+      <polygon style="fill: #000000" points="-145.396,-363.978 -149.442,-353.556 -150.95,-358.938 -156.162,-360.962 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-145.396,-363.978 -149.442,-353.556 -150.95,-358.938 -156.162,-360.962 "/>
+    </g>
+    <g>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-102.083" y1="-300.281" x2="-102.179" y2="-316.018"/>
+      <polygon style="fill: #000000" points="-102.225,-323.518 -97.164,-313.549 -102.179,-316.018 -107.164,-313.488 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-102.225,-323.518 -97.164,-313.549 -102.179,-316.018 -107.164,-313.488 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-360" y="-480">
+      <tspan x="-360" y="-480"></tspan>
+    </text>
+    <text font-size="18.4458" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-360" y="-462.85">
+      <tspan x="-360" y="-462.85">Ghost Path:</tspan>
+      <tspan x="-360" y="-439.792">PPB2 and DMP files are referenced</tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-300" y="-400">
+      <tspan x="-300" y="-400"></tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-102.708" y="-402.708">
+      <tspan x="-102.708" y="-402.708"></tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-260" y="-260">
+      <tspan x="-260" y="-260"></tspan>
+    </text>
+    <g>
+      <polygon style="fill: #ffffff" points="55.9921,-360 151.984,-264.008 55.9921,-168.016 -40,-264.008 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="55.9921,-360 151.984,-264.008 55.9921,-168.016 -40,-264.008 "/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="55.9921" y="-260.108">
+        <tspan x="55.9921" y="-260.108">smooth*-30.fe</tspan>
+      </text>
+    </g>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="55.9921" y="-264.008">
+      <tspan x="55.9921" y="-264.008"></tspan>
+    </text>
+    <g>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="4.38364" y1="-309.112" x2="-53.6001" y2="-359.789"/>
+      <polygon style="fill: #000000" points="-59.2473,-364.724 -48.4273,-361.908 -53.6001,-359.789 -55.008,-354.379 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-59.2473,-364.724 -48.4273,-361.908 -53.6001,-359.789 -55.008,-354.379 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-320" y="-460">
+      <tspan x="-320" y="-460"></tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-240" y="-440">
+      <tspan x="-240" y="-440"></tspan>
+    </text>
+  </g>
+  <g>
+    <g>
+      <polygon style="fill: #ffffff" points="220,-440 230,-450 730,-450 730,-90 720,-80 220,-80 220,-440 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="220,-440 230,-450 730,-450 730,-90 720,-80 220,-80 220,-440 "/>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="220" y1="-440" x2="720" y2="-440"/>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="720" y1="-440" x2="730" y2="-450"/>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="720" y1="-440" x2="720" y2="-80"/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="230" y="-418.1">
+        <tspan x="230" y="-418.1"></tspan>
+      </text>
+      <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="230" y1="-415.1" x2="230" y2="-415.1"/>
+    </g>
+    <g>
+      <polygon style="fill: #ffffff" points="334.942,-340 429.884,-245.058 334.942,-150.116 240,-245.058 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="334.942,-340 429.884,-245.058 334.942,-150.116 240,-245.058 "/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="334.942" y="-241.158">
+        <tspan x="334.942" y="-241.158">*.dmp</tspan>
+      </text>
+    </g>
+    <g>
+      <polygon style="fill: #ffffff" points="598.642,-340 717.284,-221.358 598.642,-102.716 480,-221.358 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="598.642,-340 717.284,-221.358 598.642,-102.716 480,-221.358 "/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="598.642" y="-217.458">
+        <tspan x="598.642" y="-217.458">PPBaccuracyGREEN_Realz.txt</tspan>
+      </text>
+    </g>
+    <g>
+      <polygon style="fill: #ffffff" points="454.942,-420 509.884,-365.058 454.942,-310.116 400,-365.058 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="454.942,-420 509.884,-365.058 454.942,-310.116 400,-365.058 "/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="454.942" y="-361.158">
+        <tspan x="454.942" y="-361.158">*.merged</tspan>
+      </text>
+    </g>
+    <g>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="382.908" y1="-293.024" x2="420.094" y2="-330.21"/>
+      <polygon style="fill: #000000" points="425.397,-335.513 421.862,-324.906 420.094,-330.21 414.791,-331.977 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="425.397,-335.513 421.862,-324.906 420.094,-330.21 414.791,-331.977 "/>
+    </g>
+    <g>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="538.821" y1="-281.179" x2="489.797" y2="-330.203"/>
+      <polygon style="fill: #000000" points="484.493,-335.507 495.1,-331.971 489.797,-330.203 488.029,-324.9 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="484.493,-335.507 495.1,-331.971 489.797,-330.203 488.029,-324.9 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="220" y="-440">
+      <tspan x="220" y="-440"></tspan>
+    </text>
+    <text font-size="18.4458" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="220" y="-422.312">
+      <tspan x="220" y="-422.312">Data Path:</tspan>
+      <tspan x="220" y="-399.255">PPB2 file is referenced</tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="260" y="-440">
+      <tspan x="260" y="-440"></tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="260" y="-420">
+      <tspan x="260" y="-420"></tspan>
+    </text>
+  </g>
+  <g>
+    <g>
+      <polygon style="fill: #ffffff" points="-20,760 -10,750 350,750 350,950 340,960 -20,960 -20,760 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-20,760 -10,750 350,750 350,950 340,960 -20,960 -20,760 "/>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-20" y1="760" x2="340" y2="760"/>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="340" y1="760" x2="350" y2="750"/>
+      <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="340" y1="760" x2="340" y2="960"/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-10" y="781.9">
+        <tspan x="-10" y="781.9"></tspan>
+      </text>
+      <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="-10" y1="784.9" x2="-10" y2="784.9"/>
+    </g>
+    <g>
+      <polygon style="fill: #ffffff" points="250,800 320,870 250,940 180,870 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="250,800 320,870 250,940 180,870 "/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="250" y="873.9">
+        <tspan x="250" y="873.9">*-30.fe</tspan>
+      </text>
+    </g>
+    <g>
+      <polygon style="fill: #ffffff" points="80,800 160,870 80,940 0,870 "/>
+      <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="80,800 160,870 80,940 0,870 "/>
+      <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="80" y="873.9">
+        <tspan x="80" y="873.9">*_PPB2.fe</tspan>
+      </text>
+    </g>
+    <text font-size="18.446" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="-20" y="777.15">
+      <tspan x="-20" y="777.15">Required Input files</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="162.945" y1="748.999" x2="164.385" y2="694.732"/>
+    <polygon style="fill: #000000" points="164.584,687.234 169.317,697.364 164.385,694.732 159.321,697.098 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="164.584,687.234 169.317,697.364 164.385,694.732 159.321,697.098 "/>
+  </g>
+</svg>

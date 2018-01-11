@@ -22,9 +22,6 @@ while [[ $# -gt 0 ]]; do
     shift # next argument
 done
 
-# Load surface evolver into PATH
-module load surface-evolver
-
 # Set base directory in relation to the location of current script
 BASEDIR="$(dirname $0)/.."
 
@@ -37,32 +34,22 @@ fi
 cd $BASEDIR/results
 
 if [[ -z ${RESUME} ]]; then
-    # Initialize files
-    TMPFILE=$(mktemp)
-    echo "" > area_volume_center_deltas.csv
+    # Initialize file
     echo "" > all_cells_points.txt
-    echo "v" > /tmp/evolver_v.tmp
 
     # Iterate over combinations of cells and starting points
-    for FE in $(ls $BASEDIR/data/*-30.fe); do
-        cat ${FE} /tmp/evolver_v.tmp | sed 's/ee\.e_boundary/0/g' | sed 's/showq//g' > ${TMPFILE}
-        VOL=$(echo ${TMPFILE} | evolver -x 2>/dev/null | egrep -A 1 '^Body' | awk '{print $3}' | grep -oP '[-\.0-9]+')
-        echo -e "$(basename ${FE})\t${VOL}" >> cell_volumes.csv
-
-        cat ${FE} ${BASEDIR}/etc/AreaVolumeCenter_Delta.txt | sed 's/ee\.e_boundary/0/g' | sed 's/showq//g' > ${TMPFILE}
-        DELTA=$(echo ${TMPFILE} | evolver -x 2>/dev/null | grep 'Distance between area center and volume center' | grep -v 'printf' | cut -f2 -d: | sed 's/\s//g')
-        echo -e "$(basename ${FE})\t${DELTA}" >> area_volume_center_deltas.csv
+    NUM_CELLS=0
+    for STL in $(ls $BASEDIR/data/stls/*.stl | egrep -v "_PPB2.stl"); do
         for START in $(cat $BASEDIR/etc/points.txt | sed 's/\s//g'); do
              POINT=$(echo $START | sed -e 's/\s//g' -e 's/\,/\n/g' | sed '/\./ s/\.\{0,1\}0\{1,\}$//' | tr '\n' ',' | sed 's/\,$//g')
-             echo $FE $POINT >> all_cells_points.txt
+             echo ${STL%.stl}-30.fe $POINT >> all_cells_points.txt
         done
+        NUM_CELLS=$((${NUM_CELLS} + 1))
     done
-    # Delete temp files
-    rm -f ${TMPFILE} /tmp/evolver_v.tmp
 
-    # Split up file in batches of 2500, since the max number of queued jobs allowed on Biocluster is 5000
+    # Split up file in batches of N, where N is 2500 minus number of cells, since the max number of queued jobs allowed on UCR's HPCC cluster is 5000
     rm -f split_cells_points_*
-    split -l 2500 all_cells_points.txt split_cells_points_ --additional-suffix='.txt'
+    split -l $((2500 - ${NUM_CELLS})) all_cells_points.txt split_cells_points_ --additional-suffix='.txt'
 fi
 
 # Gather split files
@@ -77,27 +64,43 @@ else
     FILES=$(ls split_cells_points_*.txt | head -2)
 fi
 
-# Track counts of cells
-#count=0
-#total=$(cat split_cells_points_*.txt | wc -l)
-
 # Submit jobs based on cell and point combinations
 cd $BASEDIR/jobs
+PREV_CELL="None"
 for FILE in ${FILES}; do
     IFS=$'\n'
     for line in $(cat $BASEDIR/results/${FILE}); do
         IFS=$' '
-        # Submit to job to cluster
-        echo "Submitting job: $(basename $(echo ${line} | awk '{print $1}')) $(echo ${line} | awk '{print $2}')"
-        # Torque
-        #echo predict_div.sh ${line} | qsub -l walltime=72:00:00 -j oe
-        # Slurm
-        sbatch predict_div_wrapper.sh ${line}
+        SMOOTH=$(echo ${line} | awk '{print $1}')
+        CELLNAME=${SMOOTH%-30.fe}
 
-        # Run Locally
-        #count=$(($count+1))
-        #echo -e "Processing ${line} $count/$total\n"
+        # Submit job to Cluster, or run locally
+        echo "Submitting job: $(basename $(echo ${line} | awk '{print $1}')) $(echo ${line} | awk '{print $2}')"
+       
+        # Make sure that submissions to cluster schedulers are using dependancy control
+        if [[ ${PREV_CELL} == "None" || ! $PREV_CELL == $CELLNAME ]]; then
+            # Torque
+            #SH_JOBID=$(echo spherical_harmonics.sh ${CELLNAME}.stl | qsub -l walltime=2:00:00 -j oe)
+
+            # Slurm
+            SH_JOBID=$(sbatch -p short,batch --time=2:00:00 --wrap="spherical_harmonics.sh ${CELLNAME}.stl" | grep -Po '[0-9]*$')
+        fi
+
+        # Torque
+        #echo predict_div.sh ${line} | qsub -l walltime=72:00:00 -j oe -W depend=afterok:${SH_JOBID}
+        
+        # Slurm
+        if [[ ! -z ${SH_JOBID} ]]; then
+            sbatch --dependency=afterok:${SH_JOBID} predict_div_wrapper.sh ${line}
+        else
+            echo "ERROR: SH_JOBID is empty, exiting."
+            exit 1
+        fi
+
+        # Run Locally, this is done in serial to make sure that local resources are not overwhelmed
         #predict_div.sh ${line}
+
+        PREV_CELL=${CELLNAME}
         IFS=$'\n'
     done
 done
