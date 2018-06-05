@@ -11,7 +11,7 @@ These assumptions are compatibale with the UCR HPCC Cluster. For other Slurm imp
 # Install
 Clone a copy of the code to a directory of your choice, you will need a GitHub account in order to do this:
 ```
-git clone git@github.com:jdhayes/predictive_division.git
+git clone https://github.com/jdhayes/predictive_division.git
 ```
 Then add the following lines to your .bashrc file:
 ```
