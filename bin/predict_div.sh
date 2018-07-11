@@ -7,7 +7,8 @@ ARGS=2        # Number of arguments expected.
 E_BADARGS=65  # Exit value if incorrect number of args passed.
 test $# -ne $ARGS && echo -e "Usage:\n\t$(basename $0) <FE 30 filename> <Starting Point>\n\nExample:\n\t/path/to/data/30.fe 0.5,0.5,0.5" && exit $E_BADARGS
 
-EVOLVER="evolver -x -p2"
+#EVOLVER="evolver -x -p2"
+EVOLVER="evolver -x"
 BASEDIR="$(dirname $0)/.."
 SMOOTH=$(basename $1)
 CELLNAME=${SMOOTH%-30.fe}

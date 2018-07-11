@@ -1,0 +1,130 @@
+/* inertia.txt
+
+   Calculating moment of inertia matrix, eigenvalues and eigenvectors.
+
+   This file is designed so it can be read into a running surface, or
+   a dump file.  It could also be read in the bottom section of the
+   original datafile.
+
+   Usage:
+     Read into Evolver and run calc_inertia.
+
+   Output: 
+     Three sets of eigenvalues and eigenvectors for the moment of
+     inertia matrix, with the eigenvalues scaled to be size independent,
+     for comparison among different size shapes.  The largest eigenvalue
+     corresponds to the most elongated direction.  The eigenvectors are
+     the directions of the principle axes, scaled to unit length.  Also 
+     output is the square root of the ratio of the largest to smallest 
+     eigenvalue, to judge non-isotropy.  One would get A ratio of 1 from 
+     a sphere, and a ratio of 2 from an ellipsoid with axes in the ratio 2:1. 
+
+   Caveats: 
+     The relevant quantities are applied to the facets of body[1].
+     If this is not correct for your model, then change the procedure
+     moment_setup below.
+*/
+
+
+// Define quantities for computing moment of inertia matrix, if
+// the quantities are not already defined, and apply to facets. 
+// Reading from external files to avoid problems when the quantities
+// are already defined.
+
+// for center of mass
+if not is_defined("x_moment") then 
+     read "cm_defs.txt";
+
+// for moments of inertia
+if not is_defined("xx_moment") then 
+    read "inertia_defs.txt";
+
+moment_setup := {
+
+  // Can't be sure the quantities are on the proper facets,
+  // so unset them from all first.
+  unset facet x_moment;
+  unset facet y_moment;
+  unset facet z_moment;
+  unset facet xx_moment;
+  unset facet xy_moment;
+  unset facet xz_moment;
+  unset facet yy_moment;
+  unset facet yz_moment;
+  unset facet zz_moment;
+
+  // Set the quantities on the facets of body[1]
+  set body[1] facet x_moment;
+  set body[1] facet y_moment;
+  set body[1] facet z_moment;
+
+  set body[1] facet xx_moment;
+  set body[1] facet xy_moment;
+  set body[1] facet xz_moment;
+  set body[1] facet yy_moment;
+  set body[1] facet yz_moment;
+  set body[1] facet zz_moment;
+}
+
+
+// Global quantities for remembering results
+define eigvalues real[3];
+define eigvecs real[3][3];
+
+calc_inertia := {
+  local moments,next_eigvecs,old_eigvecs;
+  define moments real[3][3];
+  define next_eigvecs real[3][3];
+  define old_eigvecs real[3][3];
+
+  moment_setup;
+
+  recalc;
+  moments := { {xx_moment.value-x_moment.value^2/body[1].volume, 
+                  xy_moment.value-x_moment.value*y_moment.value/body[1].volume,
+                    xz_moment.value-x_moment.value*z_moment.value/body[1].volume},
+               {xy_moment.value-x_moment.value*y_moment.value/body[1].volume,
+                  yy_moment.value-y_moment.value^2/body[1].volume, 
+                    yz_moment.value-y_moment.value*z_moment.value/body[1].volume},
+               {xz_moment.value-x_moment.value*z_moment.value/body[1].volume, 
+                  yz_moment.value=y_moment.value*z_moment.value/body[1].volume,
+                    zz_moment.value-z_moment.value^2/body[1].volume}};
+
+  if moments[1][1] < 0 then moments *= -1;  // correct for wrong surface orientation
+
+
+  eigvecs := { {1,0,0},{0,1,0},{0,0,1}};
+  for ( inx := 1 ; inx <= 1000 ; inx++ )
+  { old_eigvecs := eigvecs;
+    next_eigvecs := eigvecs*moments;  // left multiply since eigenvectors in rows
+    eigvalues[1] := sqrt(next_eigvecs[1]*next_eigvecs[1]);
+    eigvecs[1] := next_eigvecs[1]/eigvalues[1];
+    eigvecs[2] := next_eigvecs[2] - (next_eigvecs[2]*eigvecs[1])*eigvecs[1];
+    eigvalues[2] := sqrt(eigvecs[2]*eigvecs[2]);
+    eigvecs[2] /= eigvalues[2];
+    eigvecs[3] := next_eigvecs[3] - (next_eigvecs[3]*eigvecs[1])*eigvecs[1]
+                                  - (next_eigvecs[3]*eigvecs[2])*eigvecs[2];
+    eigvalues[3] := sqrt(eigvecs[3]*eigvecs[3]);
+    eigvecs[3] /= eigvalues[3];
+
+    // calculate change
+    diff := (old_eigvecs[1]-eigvecs[1])*(old_eigvecs[1]-eigvecs[1])
+          + (old_eigvecs[2]-eigvecs[2])*(old_eigvecs[2]-eigvecs[2])
+          + (old_eigvecs[3]-eigvecs[3])*(old_eigvecs[3]-eigvecs[3]);
+  };
+
+  // print normalized eigenvalues and eigenvectors
+  fudge := abs(body[1].volume)^(5/3);  // since moment of inertia goes as length^5
+  fudge *= 4^(-2/3)*3^(5/3)*pi^(-2/3)/15; // so eigenvalues 1 for a sphere
+  eigvalues /= fudge;
+  printf "\nEigenvalue      Eigenvector\n";
+  for ( ii := 1 ; ii <= 3 ; ii++ )
+    printf" %9.7f   { %8.6f, %8.6f, %8.6f }\n",eigvalues[ii],
+       eigvecs[ii][1],eigvecs[ii][2],eigvecs[ii][3];
+
+  // Max/min eigenvalue ratio
+  max_ev := maximum(eigvalues[1],maximum(eigvalues[2],eigvalues[3]));
+  min_ev := minimum(eigvalues[1],minimum(eigvalues[2],eigvalues[3]));
+  printf "Max/min axis ratio: %8.6f\n",sqrt(max_ev/min_ev);
+}
+

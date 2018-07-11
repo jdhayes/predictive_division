@@ -1,0 +1,47 @@
+/* inertia_defs.txt
+   Auxialiary file called by inertia.txt.
+   Contains moment of inertia quantity definitions.
+   Done in a separate file to avoid possible conflict with
+   existing definitions of the same quantities.
+   
+   Author: Ken Brakke, July 7, 2017
+*/
+
+  { 
+    define quantity xx_moment info_only method facet_vector_integral
+    vector_integrand:
+    q1: 0
+    q2: 0
+    q3: x^2*z;
+    
+    define quantity xy_moment info_only method facet_vector_integral
+    vector_integrand:
+    q1: 0
+    q2: 0
+    q3: x*y*z;
+    
+    define quantity xz_moment info_only method facet_vector_integral
+    vector_integrand:
+    q1: 0
+    q2: x*z*y
+    q3: 0;
+    
+    define quantity yy_moment info_only method facet_vector_integral
+    vector_integrand:
+    q1: 0
+    q2: 0
+    q3: y^2*z;
+    
+    define quantity yz_moment info_only method facet_vector_integral
+    vector_integrand:
+    q1: y*z*x
+    q2: 0
+    q3: 0;
+    
+    define quantity zz_moment info_only method facet_vector_integral
+    vector_integrand:
+    q1: z^2*x
+    q2: 0
+    q3: 0;
+  };
+  

@@ -6,10 +6,11 @@ BASEDIR="$(dirname $0)/.."
 # Set working dir
 cd ${BASEDIR}/results
 
-# Compile all predictions
+# Compile all predictions and calculations
 cat */prediction.csv > predictions.csv
 cat */cell_volume.csv > cell_volumes.csv
 cat */area_volume_center_delta.csv > area_volume_center_deltas.csv
+cat */eigenvalue_ratio.csv > eigenvalue_ratios.csv
 
 # Fix perms, I should really do this within the job
 #chgrp -R rasmussenlab .

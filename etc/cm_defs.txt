@@ -1,0 +1,27 @@
+/* cm_defs.txt
+   Auxiliary file containing definitions of center-of-mass quantities.
+   Called by inertia.txt.
+   Done in separate file to avoid conflict with possible existing
+   definitions of the same quantities.
+*/
+  
+  { 
+    define quantity x_moment info_only method facet_vector_integral
+    vector_integrand:
+    q1: 0
+    q2: 0
+    q3: x*z;
+
+    define quantity y_moment info_only method facet_vector_integral
+    vector_integrand:
+    q1: 0
+    q2: 0
+    q3: y*z;
+
+    define quantity z_moment info_only method facet_vector_integral
+    vector_integrand:
+    q1: 0
+    q2: 0
+    q3: z^2/2;
+
+  };
