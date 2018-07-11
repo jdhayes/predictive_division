@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="55cm" height="81cm" viewBox="-361 -641 1092 1602" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="61cm" height="81cm" viewBox="-361 -641 1207 1602" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="80" y="420" width="160" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="80" y="420" width="160" height="100"/>
+  </g>
   <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="160" y="634.5">
     <tspan x="160" y="634.5"></tspan>
   </text>
   <g>
-    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="103.985" y1="579.001" x2="-15.0867" y2="483.09"/>
-    <polygon style="fill: #000000" points="-20.9276,478.385 -10.0033,480.764 -15.0867,483.09 -16.2763,488.552 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-20.9276,478.385 -10.0033,480.764 -15.0867,483.09 -16.2763,488.552 "/>
-  </g>
-  <g>
-    <rect style="fill: #ffffff" x="-80" y="580" width="479.7" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-80" y="580" width="479.7" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="159.85" y="599">predict_div_all.sh</text>
-    <rect style="fill: #ffffff" x="-80" y="608" width="479.7" height="52"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-80" y="608" width="479.7" height="52"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-77" y="622">+1 = Submit primary job for each cell to Slurm</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-77" y="638">+2 = Split input files into batches (2500 - Num_Cells)</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-77" y="654">+3 = Pass initial 2 batches of jobs to predict_div_wrapper.sh</text>
-    <rect style="fill: #ffffff" x="-80" y="660" width="479.7" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-80" y="660" width="479.7" height="8"/>
+    <rect style="fill: #ffffff" x="-120" y="580" width="556.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="580" width="556.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="158.35" y="599">predict_div_all.sh</text>
+    <rect style="fill: #ffffff" x="-120" y="608" width="556.7" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="608" width="556.7" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="622">+1 = Submit primary job (spherical_harmonics.sh) for each cell to Slurm</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="638">+2 = Split input files into batches (2500 - Num_Cells)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-117" y="654">+3 = Pass initial 2 batches of predict_div_wrapper.sh jobs to slurm</text>
+    <rect style="fill: #ffffff" x="-120" y="660" width="556.7" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="660" width="556.7" height="8"/>
   </g>
   <g>
     <rect style="fill: #ffffff" x="-120" y="60" width="572.1" height="28"/>
@@ -37,43 +36,30 @@
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="188" width="572.1" height="8"/>
   </g>
   <g>
-    <g>
-      <rect style="fill: #ffffff" x="100" y="260" width="140" height="100"/>
-      <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="260" width="140" height="100"/>
-    </g>
-    <text font-size="18.446" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="170" y="316.4">
-      <tspan x="170" y="316.4">Slurm</tspan>
-    </text>
+    <rect style="fill: #ffffff" x="-360" y="280" width="626" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-360" y="280" width="626" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-47" y="299">predict_div_wrapper.sh</text>
+    <rect style="fill: #ffffff" x="-360" y="308" width="626" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-360" y="308" width="626" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-357" y="322">+1 = Wait for FE files to be generated from primary job (spherical_harmonics.sh)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-357" y="338">+2 = Execute predict_div.sh job with 1 cell and 1 starting point</text>
+    <rect style="fill: #ffffff" x="-360" y="344" width="626" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-360" y="344" width="626" height="8"/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="-260" y="420" width="402.7" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-260" y="420" width="402.7" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-58.65" y="439">Dependent Job</text>
-    <rect style="fill: #ffffff" x="-260" y="448" width="402.7" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-260" y="448" width="402.7" height="20"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-257" y="462">+1 = Submit job to Slurm via predict_div_wrapper.sh</text>
-    <rect style="fill: #ffffff" x="-260" y="468" width="402.7" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-260" y="468" width="402.7" height="8"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-47" y1="280" x2="61.417" y2="202.65"/>
+    <polygon style="fill: #000000" points="67.5224,198.294 62.2858,208.172 61.417,202.65 56.4779,200.032 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="67.5224,198.294 62.2858,208.172 61.417,202.65 56.4779,200.032 "/>
   </g>
   <g>
-    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-10.6145" y1="419.009" x2="90.8812" y2="357.752"/>
-    <polygon style="fill: #000000" points="97.3023,353.876 91.3244,363.324 90.8812,357.752 86.1572,354.763 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="97.3023,353.876 91.3244,363.324 90.8812,357.752 86.1572,354.763 "/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="166.05" y1="60" x2="461.157" y2="-75.9268"/>
+    <polygon style="fill: #000000" points="467.969,-79.0645 460.978,-70.3395 461.157,-75.9268 456.794,-79.4224 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="467.969,-79.0645 460.978,-70.3395 461.157,-75.9268 456.794,-79.4224 "/>
   </g>
   <g>
-    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="168.895" y1="259.079" x2="167.758" y2="206.717"/>
-    <polygon style="fill: #000000" points="167.596,199.219 172.811,209.108 167.758,206.717 162.814,209.325 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="167.596,199.219 172.811,209.108 167.758,206.717 162.814,209.325 "/>
-  </g>
-  <g>
-    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="220.091" y1="59.0154" x2="322.201" y2="-71.331"/>
-    <polygon style="fill: #000000" points="326.826,-77.235 324.595,-66.2795 322.201,-71.331 316.723,-72.4463 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="326.826,-77.235 324.595,-66.2795 322.201,-71.331 316.723,-72.4463 "/>
-  </g>
-  <g>
-    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="119.925" y1="58.9986" x2="46.4412" y2="-50.9299"/>
-    <polygon style="fill: #000000" points="42.2732,-57.1651 51.9874,-51.6302 46.4412,-50.9299 43.6738,-46.0728 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="42.2732,-57.1651 51.9874,-51.6302 46.4412,-50.9299 43.6738,-46.0728 "/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="166.05" y1="60" x2="-91.1249" y2="-55.997"/>
+    <polygon style="fill: #000000" points="-97.9617,-59.0806 -86.7902,-59.5269 -91.1249,-55.997 -90.9018,-50.4113 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-97.9617,-59.0806 -86.7902,-59.5269 -91.1249,-55.997 -90.9018,-50.4113 "/>
   </g>
   <g>
     <g>
@@ -242,47 +228,55 @@
     <tspan x="-20" y="777.15">Required Input files</tspan>
   </text>
   <g>
-    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="159.929" y1="748.993" x2="159.885" y2="678.742"/>
-    <polygon style="fill: #000000" points="159.88,671.242 164.886,681.239 159.885,678.742 154.886,681.245 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="159.88,671.242 164.886,681.239 159.885,678.742 154.886,681.245 "/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="159.224" y1="748.993" x2="158.733" y2="678.742"/>
+    <polygon style="fill: #000000" points="158.68,671.242 163.75,681.207 158.733,678.742 153.75,681.277 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="158.68,671.242 163.75,681.207 158.733,678.742 153.75,681.277 "/>
   </g>
   <g>
-    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="159.85" y1="580" x2="279.2" y2="525.074"/>
-    <polygon style="fill: #000000" points="286.013,521.938 279.02,530.661 279.2,525.074 274.839,521.577 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="286.013,521.938 279.02,530.661 279.2,525.074 274.839,521.577 "/>
+    <rect style="fill: #ffffff" x="280" y="240" width="418.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="280" y="240" width="418.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="489.05" y="259">spherical_harmonics.sh</text>
+    <rect style="fill: #ffffff" x="280" y="268" width="418.1" height="84"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="280" y="268" width="418.1" height="84"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="283" y="282">+1 = Convert STLs to FEs</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="283" y="298">+2 = Create Smooth file (Spherical harmonics)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="283" y="314">+3 = Compute the eigenvalue ratio for a cell</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="283" y="330">+4 = Compute the volume for each cell</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="283" y="346">+5 = Compute the area volume center deltas for a cell</text>
+    <rect style="fill: #ffffff" x="280" y="352" width="418.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="280" y="352" width="418.1" height="8"/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="200" y="400" width="441.2" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="200" y="400" width="441.2" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="420.6" y="419">Primary Job</text>
-    <rect style="fill: #ffffff" x="200" y="428" width="441.2" height="84"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="200" y="428" width="441.2" height="84"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="442">+1 = Submit job to Slurm via sbatch wrap</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="458">+2 = Convert STLs to FEs</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="474">+3 = Create Smooth file (Spherical harmonics)</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="490">+4 = Compute the volume for each cell</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="506">+5 = Compute the area volume center deltas for each cell</text>
-    <rect style="fill: #ffffff" x="200" y="512" width="441.2" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="200" y="512" width="441.2" height="8"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="465.822" y1="-451.007" x2="463.147" y2="-573.284"/>
+    <polygon style="fill: #000000" points="462.983,-580.782 468.2,-570.894 463.147,-573.284 458.203,-570.675 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="462.983,-580.782 468.2,-570.894 463.147,-573.284 458.203,-570.675 "/>
   </g>
   <g>
-    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="318.733" y1="399.026" x2="249.34" y2="357.49"/>
-    <polygon style="fill: #000000" points="242.905,353.638 254.053,354.484 249.34,357.49 248.917,363.064 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="242.905,353.638 254.053,354.484 249.34,357.49 248.917,363.064 "/>
+    <rect style="fill: #ffffff" x="80" y="-640" width="764.6" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="80" y="-640" width="764.6" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="462.3" y="-621">post_processing.sh</text>
+    <rect style="fill: #ffffff" x="80" y="-612" width="764.6" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="80" y="-612" width="764.6" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="83" y="-598">+1 = Consolidate all predictions and calculations into corresponding files under results directory</text>
+    <rect style="fill: #ffffff" x="80" y="-592" width="764.6" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="80" y="-592" width="764.6" height="8"/>
   </g>
   <g>
-    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="343.485" y1="-451.007" x2="261.423" y2="-574.901"/>
-    <polygon style="fill: #000000" points="257.282,-581.153 266.972,-575.577 261.423,-574.901 258.635,-570.055 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="257.282,-581.153 266.972,-575.577 261.423,-574.901 258.635,-570.055 "/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="158.832" y1="579.014" x2="159.349" y2="530.727"/>
+    <polygon style="fill: #000000" points="159.43,523.228 164.322,533.281 159.349,530.727 154.323,533.174 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="159.43,523.228 164.322,533.281 159.349,530.727 154.323,533.174 "/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="-80" y="-640" width="633.7" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-80" y="-640" width="633.7" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="236.85" y="-621">post_processing.sh</text>
-    <rect style="fill: #ffffff" x="-80" y="-612" width="633.7" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-80" y="-612" width="633.7" height="20"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-77" y="-598">+1 = Consolidate all predictions into corresponding files under results directory</text>
-    <rect style="fill: #ffffff" x="-80" y="-592" width="633.7" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-80" y="-592" width="633.7" height="8"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="160" y1="420" x2="-37.7502" y2="355.039"/>
+    <polygon style="fill: #000000" points="-44.8756,352.698 -33.8146,351.069 -37.7502,355.039 -36.9356,360.569 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-44.8756,352.698 -33.8146,351.069 -37.7502,355.039 -36.9356,360.569 "/>
   </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="160" y1="420" x2="479.472" y2="361.747"/>
+    <polygon style="fill: #000000" points="486.85,360.401 477.909,367.114 479.472,361.747 476.115,357.276 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="486.85,360.401 477.909,367.114 479.472,361.747 476.115,357.276 "/>
+  </g>
+  <text font-size="18.446" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="160" y="476.4">
+    <tspan x="160" y="476.4">Slurm</tspan>
+  </text>
 </svg>
