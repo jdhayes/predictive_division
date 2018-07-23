@@ -56,10 +56,10 @@ if [[ -f "$DMPFILE" ]]; then
     DMP=$(echo ${DMPFILE} | grep -oP '[0-9]+\.[0-9]+\.dmp$' | sed 's/\.dmp//g');
 
     # Merge all sources into a single fe file and replace VARs and remove broken code
-    cat ${DMPFILE} ${BASEDIR}/etc/PPBaccuracyGREEN_Realz.cmd | sed "s/PPBFILE/$DIR\/$PPBFILE/g" | sed "s/showq//g" | sed "s/ee\.e_boundary/0/g" > ${DMP}_merged
+    cat ${DMPFILE} ${BASEDIR}/etc/PPB_OFFSET.txt | sed "s/PPBFILE/$DIR\/$PPBFILE/g" | sed "s/showq//g" | sed "s/ee\.e_boundary/0/g" > ${DMP}_merged
 
     # Create "ghost" prediction for visualization purposes
-    cat ${BASEDIR}/data/${SMOOTH} ${BASEDIR}/etc/maybealittleok.cmd ${BASEDIR}/etc/PPBaccuracyGREEN_Realz.cmd | sed "s/PPBFILE/$DIR\/${PPBFILE}/g" | sed "s/DMPFILE/${DMPFILE}/g" | sed "s/showq//g" | sed "s/ee\.e_boundary/0/g" > ${DMP}_merged_ghost;
+    cat ${BASEDIR}/data/${SMOOTH} ${BASEDIR}/etc/COLOR_MASK.txt ${BASEDIR}/etc/PB_OFFSET.txt | sed "s/PPBFILE/$DIR\/${PPBFILE}/g" | sed "s/DMPFILE/${DMPFILE}/g" | sed "s/showq//g" | sed "s/ee\.e_boundary/0/g" > ${DMP}_merged_ghost;
     echo "showq" >> ${DMP}_merged_ghost
 
     # Run evolver with fe and data files
